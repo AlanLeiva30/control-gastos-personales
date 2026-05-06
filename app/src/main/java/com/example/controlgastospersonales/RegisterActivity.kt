@@ -7,22 +7,28 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var edtNombreRegistro: EditText
     private lateinit var edtCorreoRegistro: EditText
     private lateinit var edtPasswordRegistro: EditText
     private lateinit var edtConfirmarPassword: EditText
     private lateinit var btnRegistrar: Button
     private lateinit var btnVolverLogin: Button
+
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
+        edtNombreRegistro = findViewById(R.id.edtNombreRegistro)
         edtCorreoRegistro = findViewById(R.id.edtCorreoRegistro)
         edtPasswordRegistro = findViewById(R.id.edtPasswordRegistro)
         edtConfirmarPassword = findViewById(R.id.edtConfirmarPassword)
@@ -39,11 +45,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registrarUsuario() {
+        val nombre = edtNombreRegistro.text.toString().trim()
         val correo = edtCorreoRegistro.text.toString().trim()
         val password = edtPasswordRegistro.text.toString().trim()
         val confirmarPassword = edtConfirmarPassword.text.toString().trim()
 
-        if (correo.isEmpty() || password.isEmpty() || confirmarPassword.isEmpty()) {
+        if (nombre.isEmpty() || correo.isEmpty() || password.isEmpty() || confirmarPassword.isEmpty()) {
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
@@ -66,11 +73,31 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(correo, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+                    val usuarioActual = auth.currentUser
 
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    if (usuarioActual != null) {
+                        val uid = usuarioActual.uid
+
+                        val datosUsuario = hashMapOf(
+                            "uid" to uid,
+                            "nombre" to nombre,
+                            "correo" to correo
+                        )
+
+                        db.collection("usuarios")
+                            .document(uid)
+                            .set(datosUsuario)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show()
+
+                                val intent = Intent(this, LoginActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            .addOnFailureListener { error ->
+                                Toast.makeText(this, "Error al guardar usuario: ${error.message}", Toast.LENGTH_LONG).show()
+                            }
+                    }
                 } else {
                     Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }

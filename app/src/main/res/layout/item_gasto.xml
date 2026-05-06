@@ -11,9 +11,18 @@
         android:id="@+id/txtItemGasto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1. Almuerzo - $5.00"
+        android:text="🧾 1. Almuerzo"
         android:textColor="#0F172A"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:lineSpacingExtra="4dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toca para editar o borrar"
+        android:textColor="#64748B"
+        android:textSize="12sp"
+        android:layout_marginTop="4dp" />
 
 </LinearLayout>

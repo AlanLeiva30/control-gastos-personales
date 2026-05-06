@@ -60,6 +60,17 @@
                 android:layout_marginBottom="20dp" />
 
             <EditText
+                android:id="@+id/edtNombreRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre completo"
+                android:inputType="textPersonName"
+                android:textColor="#0F172A"
+                android:textColorHint="#94A3B8"
+                android:backgroundTint="#6366F1"
+                android:padding="12dp" />
+
+            <EditText
                 android:id="@+id/edtCorreoRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +79,8 @@
                 android:textColor="#0F172A"
                 android:textColorHint="#94A3B8"
                 android:backgroundTint="#6366F1"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:layout_marginTop="12dp" />
 
             <EditText
                 android:id="@+id/edtPasswordRegistro"
@@ -125,7 +137,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Empieza a controlar tus finanzas de forma simple"
+            android:text="Tu información se guardará de forma segura"
             android:textSize="13sp"
             android:textColor="#94A3B8"
             android:gravity="center"
