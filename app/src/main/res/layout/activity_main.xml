@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F4F6FA"
+    android:padding="18dp">
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="💰"
+        android:textSize="42sp"
+        android:gravity="center"
+        android:background="#E0E7FF"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Control de Gastos"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#0F172A"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Administra tus finanzas personales"
+        android:textSize="14sp"
+        android:textColor="#334155"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="14dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👋 Bienvenido"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A" />
+
+        <TextView
+            android:id="@+id/txtBienvenida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido"
+            android:textSize="14sp"
+            android:textColor="#334155"
+            android:layout_marginTop="3dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="14dp"
+        android:elevation="4dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nuevo gasto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/edtNombreGasto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del gasto"
+            android:textColor="#0F172A"
+            android:textColorHint="#475569"
+            android:backgroundTint="#6366F1" />
+
+        <EditText
+            android:id="@+id/edtMonto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Monto"
+            android:inputType="numberDecimal"
+            android:textColor="#0F172A"
+            android:textColorHint="#475569"
+            android:backgroundTint="#6366F1" />
+
+        <EditText
+            android:id="@+id/edtCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Categoría"
+            android:textColor="#0F172A"
+            android:textColorHint="#475569"
+            android:backgroundTint="#6366F1" />
+
+        <EditText
+            android:id="@+id/edtFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Seleccionar fecha"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
+            android:textColor="#0F172A"
+            android:textColorHint="#475569"
+            android:backgroundTint="#6366F1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Guardar"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#4F46E5"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cerrar sesión"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#D32F2F"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTotalMensual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total mensual: $0.00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#0F172A"
+        android:background="#E0E7FF"
+        android:padding="12dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:id="@+id/txtHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Historial de gastos"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#0F172A"
+        android:layout_marginBottom="4dp" />
+
+    <ListView
+        android:id="@+id/listaGastos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="320"
+        android:background="#FFFFFF"
+        android:divider="#CBD5E1"
+        android:dividerHeight="1dp"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
